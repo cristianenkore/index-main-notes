@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500彩票网官方 知识库 · 查询与对照</title>
+  <style>
+    /* 基础重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', sans-serif;
+      background: #f5f7fa;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 - 目录感引导区 */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+      color: #e8edf3;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      border-bottom: 4px solid #3080d0;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      max-width: 640px;
+      margin: 0 auto 1.2rem;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    .hero .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.2rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #b0cbe5;
+    }
+
+    .hero .badge-list span::before {
+      content: "▸ ";
+      color: #57a6ff;
+    }
+
+    /* 正文主体：浅色卡片区域 — 知识库入口式布局 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* 目录感卡片网格 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+      border: 1px solid #e8edf4;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0, 20, 50, 0.10);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0b2a45;
+      border-left: 5px solid #3080d0;
+      padding-left: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #2b3f54;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #3080d0;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef4fe;
+      color: #1a5b9e;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      margin: 0.2rem 0.25rem;
+    }
+
+    /* 提示区 / 说明区 */
+    .info-box {
+      background: #f0f5ff;
+      border-left: 8px solid #3080d0;
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      margin: 1.8rem 0;
+    }
+
+    .info-box p {
+      margin: 0.5rem 0;
+    }
+
+    .info-box strong {
+      color: #0b3460;
+    }
+
+    .faq-summary {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0 1.5rem;
+      border: 1px solid #dfe7f0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px dashed #d9e2ed;
+      padding: 0.7rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #003057;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #2a4059;
+      font-size: 0.95rem;
+    }
+
+    /* 链接强调色 */
+    a {
+      color: #1a6bc4;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1a6bc4;
+    }
+
+    .inline-link {
+      font-weight: 500;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+      }
+      .container {
+        padding: 1.5rem 1rem 2rem;
+      }
+      .card {
+        padding: 1.3rem 1.2rem;
+      }
+      .info-box, .faq-summary {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #6b7f95;
+      border-top: 1px solid #dce4ee;
+      padding-top: 1.5rem;
+    }
+
+    .footer-note a {
+      color: #1a6bc4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图：目录式入口氛围 -->
+  <header class="hero">
+    <h1>📚 知识库 · 查询与对照</h1>
+    <p class="sub">围绕日常查询、数据对照及延伸阅读整理的信息入口，涵盖常见场景与参考指引。</p>
+    <div class="badge-list">
+      <span>常用对照表</span>
+      <span>信息检索</span>
+      <span>相关说明</span>
+      <span>延伸阅读</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 卡片网格：目录感布局 -->
+    <div class="grid-2col">
+      <!-- 卡片1：说明区 — 日常查询角度 -->
+      <section class="card">
+        <h3>日常查询 · 常见方向</h3>
+        <p>在信息检索与数据对照场景中，许多用户会关注基础概念、发布渠道以及参考来源。以下为几个常用的切入方向：</p>
+        <ul>
+          <li>条目对照与分类索引</li>
+          <li>术语说明及版本备注</li>
+          <li>公开信息汇总与引用方式</li>
+        </ul>
+        <div style="margin-top: 1rem;">
+          <span class="tag">对照表</span>
+          <span class="tag">概念说明</span>
+          <span class="tag">版本库</span>
+        </div>
+      </section>
+
+      <!-- 卡片2：相关信息区 — 延伸阅读 -->
+      <section class="card">
+        <h3>相关信息 · 延伸阅读</h3>
+        <p>围绕数据查询与背景了解，延伸阅读推荐以下类型的内容：</p>
+        <ul>
+          <li>行业观察与统计摘要</li>
+          <li>常见问题整理 (FAQ) 摘要</li>
+          <li>参考文档与历史条目</li>
+        </ul>
+        <p style="margin-top: 0.6rem; font-size: 0.9rem;">更多可访问 <strong><a href="https://cnweb-official-500.com">500彩票网官方</a></strong> 了解完整内容。</p>
+      </section>
+    </div>
+
+    <!-- 提示区 + 说明区 合并样式 -->
+    <div class="info-box">
+      <p><strong>💡 使用提示</strong> —— 这里汇集了日常查询中较常涉及的数据说明、对照关系及背景介绍。部分条目可直接用于快速参考，如需查阅完整列表或最新版本，建议访问 <a href="https://cnweb-official-500.com">500彩票网官方</a> 对照页面。</p>
+      <p style="margin-top: 0.4rem;">说明区内容基于公开信息整理，供读者参考与延伸了解。实际以官方最新发布为准。</p>
+    </div>
+
+    <!-- FAQ 摘要区 (知识库入口常见模块) -->
+    <div class="faq-summary">
+      <h3 style="font-weight: 600; color: #0b2a45; margin-bottom: 0.2rem;">❓ 常见问题摘要</h3>
+      <div class="faq-item">
+        <span class="faq-q">日常对照一般从哪里开始查阅？</span>
+        <span class="faq-a">可以先把基础概念和分类索引作为起点，再根据需要查看详细对照表。官方信息可参考 <a href="https://cnweb-official-500.com">500彩票网官方</a> 的说明区。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">延伸阅读的内容是否保持更新？</span>
+        <span class="faq-a">知识库中的延伸条目会定期根据公开资料进行修订与补充，保持参考价值。用户也可直接前往主站浏览最新动态。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">提示区的信息有什么作用？</span>
+        <span class="faq-a">提示区旨在提供使用方向与注意事项，帮助读者更准确地理解条目背景，避免误读。建议结合 <a href="https://cnweb-official-500.com">500彩票网官方</a> 原文阅读。</span>
+      </div>
+    </div>
+
+    <!-- 补充一段承接文字：从日常查询到延伸阅读的过渡 -->
+    <p style="font-size: 0.95rem; color: #2b405a; margin: 1.2rem 0 0.5rem;">
+      以上卡片与摘要覆盖了日常查询、说明提示以及延伸阅读三种常见的知识库入口场景。无论您是初次接触还是希望深化对照，都可以从上述模块中找到脉络。如需获取最完整的条目与最新更新，<a href="https://cnweb-official-500.com">500彩票网官方</a> 提供了更详尽的整体框架与检索功能。
+    </p>
+
+    <!-- 底部信息 -->
+    <div class="footer-note">
+      <span>知识库入口式 · 信息参考页面</span>
+    </div>
+  </main>
+
+</body>
+</html>
